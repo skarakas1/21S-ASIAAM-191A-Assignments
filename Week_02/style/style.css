@@ -1,3 +1,10 @@
+html {
+    background: url(metabolism.jpeg) center center / cover no-repeat fixed;
+    height: 100%;
+    font-family:'Courier New', Courier, monospace;
+    font-size: 12px;
+}
+
 html, body {
     padding: 5px;
  }
@@ -11,23 +18,43 @@ html, body {
  }
 
  header {
+    background-color: rgb(206, 255, 92);
     grid-area: header;
     display: grid;
     grid-template-columns: .2fr .6fr .2fr;
     justify-content: center;
  }
 
+ ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
 .main {
     display: grid;
     grid-area: main;
-    background-color: aqua;
+    background-color: rgb(201, 207, 112);
 }
 
 #map {
     grid-area: map;
-    height: 40vh;
+    height: 60vh;
 }
 
 #footer {
     grid-area: footer;
+    color: cornsilk;
+}
+
+h1 {
+    margin: .5em;
+}
+
+h3 {
+    margin: .5em;
+}
+
+p {
+    margin: .5em;
 }
