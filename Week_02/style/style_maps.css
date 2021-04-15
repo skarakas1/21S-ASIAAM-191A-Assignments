@@ -1,3 +1,7 @@
 body {
     grid-template-rows: .1fr .1fr .60fr .05fr;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: "header" "main" "map"  "footer";
+    justify-content: center;
 }

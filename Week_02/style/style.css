@@ -12,7 +12,7 @@ html, body {
  body {
      display: grid;
      grid-template-rows: .1fr .30fr .60fr .05fr;
-     grid-template-columns: 1fr;
+     grid-template-columns: .8fr .2fr;
      grid-template-areas: "header" "main" "map"  "footer";
      justify-content: center;
  }
@@ -60,7 +60,7 @@ p {
 }
 
 img {
-    width: 200px;
+    width: 300px;
     margin: .5em;
 
 }
