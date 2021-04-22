@@ -5,17 +5,40 @@
         <meta charset="utf-8" />
         <link rel="shortcut icon" href="#">
 
-        <style> #map{height:90vh}</style>
+        <style>
+        #map{height:440px;}
+        </style>
 
         <!-- Leaflet's css-->
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-
+        
         <!-- Leaflet's JavaScript-->
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+        
+        <!--Text styles-->
+        <style>
+            body {
+                grid-template-areas:
+                "a a a"
+                "a a a"
+                "b b b";
+            }
+            #descriptions {
+                display: grid;
+                grid-area: "b";
+            }
+            #map {
+                display: grid;
+                grid-area: "a";
+            }
+        </style>
     </head>
     
     <body>
         <div id="map"></div>
+        <div id="descriptions">
+            <p id="text"></p>
+        </div>
     </body>
     <script src="js/init.js"></script>
 </html>
