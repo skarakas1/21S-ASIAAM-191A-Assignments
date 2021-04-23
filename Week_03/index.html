@@ -11,36 +11,28 @@
 
         <!-- Leaflet's css-->
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-        
+        <link rel="stylesheet" href="style.css"/>
         <!-- Leaflet's JavaScript-->
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-        
-        <!--Text styles-->
-        <style>
-            body {
-                grid-template-areas:
-                "a a a"
-                "a a a"
-                "b b b";
-            }
-            #descriptions {
-                display: grid;
-                grid-area: "b";
-            }
-            #map {
-                display: grid;
-                grid-area: "a";
-            }
-        </style>
     </head>
     
-    <body>
-        <h1>Welcome to map!</h1>
-        <div id="map"></div>
-        <div id="descriptions">
+    <div class="container">
+        <nav>
+            <h1>Navigation Station</h1>
+        </nav>
+        <main>
+            <div id="map"></div>
+        </main>
+        <div id="content1"></div>
+        <div id="content2"></div>
+        <div id="content3"></div>
+        <footer>Copyright Heliocentric 2021</footer>
+
+        <!--<div id="descriptions">
             <p id="text"></p>
-        </div>
-    </body>
-    <footer><h3>Click the markers for coordinates!</h3></footer>
+        </div>-->
+
+
+    </div>
     <script src="js/init.js"></script>
 </html>

@@ -21,7 +21,7 @@ function description(text,num){
     const newDescription = document.createElement("p");
     newDescription.id = "p"+num;
     newDescription.innerHTML = text;
-    document.getElementById("descriptions").appendChild(newDescription);
+    document.getElementById("content"+num).appendChild(newDescription);
 }
 
 function createButtons(lat,lng,title,id){
@@ -33,7 +33,8 @@ function createButtons(lat,lng,title,id){
     newButton.addEventListener('click', function(){
         map.flyTo([lat,lng]); //this is the flyTo from Leaflet
     })
-    document.body.appendChild(newButton); //this adds the button to our page.
+    //let nav = document.getElementById("nav");
+    document.getElementsByTagName("nav")[0].appendChild(newButton); //this adds the button to our page.
     console.log('create buttons happened here')
 }
 
