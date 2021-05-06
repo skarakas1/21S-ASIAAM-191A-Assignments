@@ -1,37 +1,57 @@
-const map = L.map('map').setView([34.0709, -118.444], 5);
+//create leaflet map and set params
+const map = L.map('map').setView([34.0709, -118.444], 1.5);
 
+//openstreetmap attribution
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
+//get the datas as json
 let url = "https://spreadsheets.google.com/feeds/list/1aWClrKHcuVol5z2qQ5gGsHzY98aQkMvD39fVPeXPb0Q/onpdsx9/public/values?alt=json"
 fetch(url)
 	.then(response => {
 		return response.json();
 		})
+    //send to function to parse json
     .then(data =>{
         processData(data)}
         )
-        
-function addMarker(data){
-   L.marker([data.lat,data.lng]).addTo(map).bindPopup(
-       '<h2>English speaker?</h2>' +
-       data.doyouspeakenglishfluently +
-       '<h3>Survey Date & Time</h3>' +
-       data.timestamp
-   )
-   return data.timestamp
+            
+//function to sort data based on response
+//and create a marker
+//with a pop up containing relevant info
+function addDataBasedonField(data){
+    //determine if user has left hometown
+    //if yes display hometown and what they miss
+    if (data.doyoulivesomewhereelsenow == "Yes"){
+        console.log('yes')
+        //use leaflet API to add marker w/ info in popup
+        L.marker([data.lat,data.lng]).addTo(map).bindPopup(
+            '<h2>Hometown</h2>' +
+            data.location +
+            '<h2>Is there anything you miss?</h2>' +
+            data.isthereanythingyoumissaboutyourhometown
+        )
+    } 
+    //if no display hometown and where they would like to move
+    if (data.doyoulivesomewhereelsenow == "No") {
+        console.log('no')
+                L.marker([data.lat,data.lng]).addTo(map).bindPopup(
+                    '<h2>Hometown</h2>' +
+                    data.location +
+                    '<h2>Is there anywhere you would like to move to?</h2>' +
+                    data.isthereanywhereyouwouldliketomoveto
+                ) 
+        }
 }
 
-/*let soups = ['gazpacho','miso','soupe a la oignon'];
-for (const item in soups){
-    console.log('please review '+ soups[item]);
-    review(soups[item]);
+//function to sort out old data from 1st survey iteration
+function sortOldData(data){
+    if (data.timestamp != ''){
+        //send to function to sort based on response, add marker and popup
+        addDataBasedonField(data);
+    }
 }
-//soups.forEach(review);
-function review(data){
-    console.log(data + ' is delicious!')
-}*/
 
 function processData(theData){
     const formattedData = [] /* this array will eventually be populated with the contents of the spreadsheet's rows */
@@ -49,7 +69,8 @@ function processData(theData){
       formattedData.push(formattedRow)
     }
     // lets see what the data looks like when its clean!
+    console.log('formattedData')
     console.log(formattedData)
-    //add marker function
-    formattedData.forEach(addMarker)
+    //send to old data function
+    formattedData.forEach(sortOldData)
 }
