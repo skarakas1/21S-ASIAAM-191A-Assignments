@@ -1,0 +1,93 @@
+/* 
+color palette
+#feffde
+#ddffbc
+#91c788
+#52734d
+*/
+
+
+body{
+    font-family:monospace;
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Sky_Dusk.jpg/1600px-Sky_Dusk.jpg);
+    background-size: cover;
+    display:grid;
+    grid-template-columns: 1fr 3fr 3fr .5fr;
+    grid-template-rows: 1fr 6fr 6fr .3fr;
+    grid-template-areas:
+    "header header header header"
+    "contentpanel mappanel mappanel pad"
+    "contentpanel sidepanel sidepanel pad"
+    "footer footer footer footer"
+}
+@media only screen and (max-width:550px){
+    body{
+        grid-template-columns: 1fr 8fr  1fr;
+        grid-template-rows: 1fr 2fr 2fr 2fr 1fr;
+        grid-template-areas: "contentpanel header pad" "contentpanel mappanel pad" "contentpanel sidepanel pad" "contentpanel pad pad" "contentpanel footer pad";
+    }
+    #contents{
+        display:block;
+    }
+}
+
+header{
+    color: floralwhite;
+    /*background-color: #fd6b90;*/
+    border-radius: .5em;
+    padding: .3em;
+    grid-area: header;
+}
+
+footer{
+    background-color: #91c788;
+    border-radius: .5em;
+    padding: .3em;
+    grid-area: footer;
+}
+
+#contents{
+    border-radius: .5em;
+    padding: .3em;
+    grid-area: contentpanel;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: repeat(20,1fr);
+}
+
+
+
+#map{
+    border-radius: .5em;
+    padding: .3em;
+    height:60vh;
+    width: 3fr;
+    grid-area: mappanel;
+} 
+
+#survey {
+    border-radius: .5em;
+    padding: .3em;
+    grid-area: sidepanel;
+    overflow: hidden;
+    /* 16:9 aspect ratio */
+    padding-top: 0%;
+    position: relative;
+}
+
+button {
+    border-radius: .5em;
+    color: #52734d;
+    background-color:#fcef7a;
+    max-height: 5em;
+    
+}
+
+#survey iframe {
+   border: 0;
+   height: 100%;
+   left: 0;
+   position: absolute;
+   top: 0;
+   width: 100%;
+}
