@@ -94,4 +94,7 @@ button {
         padding-left:5vh;
         padding-right:5vh;
     }
+    button{
+        height: 3em;
+    }
 }
