@@ -1,6 +1,6 @@
 
 //create leaflet map and set params
-const map = L.map('map').setView([35, -100], 2);
+const map = L.map('map').setView([0, 0], 2);
 
 //openstreetmap attribution
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
