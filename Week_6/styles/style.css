@@ -1,36 +1,16 @@
-/* 
-color palette
-#feffde
-#ddffbc
-#91c788
-#52734d
-*/
-
-
 body{
     font-family:monospace;
     background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Sky_Dusk.jpg/1600px-Sky_Dusk.jpg);
     background-size: cover;
     display:grid;
     grid-template-columns: 1fr 3fr 3fr .5fr;
-    grid-template-rows: 1fr 6fr 6fr .3fr;
+    grid-template-rows: 1fr 4fr 6fr .3fr;
     grid-template-areas:
     "header header header header"
-    "contentpanel mappanel mappanel pad"
-    "contentpanel sidepanel sidepanel pad"
+    "content map map ."
+    ". side side ."
     "footer footer footer footer"
 }
-@media only screen and (max-width:550px){
-    body{
-        grid-template-columns: 1fr 8fr  1fr;
-        grid-template-rows: 1fr 2fr 2fr 2fr 1fr;
-        grid-template-areas: "contentpanel header pad" "contentpanel mappanel pad" "contentpanel sidepanel pad" "contentpanel pad pad" "contentpanel footer pad";
-    }
-    #contents{
-        display:block;
-    }
-}
-
 header{
     color: floralwhite;
     /*background-color: #fd6b90;*/
@@ -40,7 +20,7 @@ header{
 }
 
 footer{
-    background-color: #91c788;
+    background-color: #6fd3a9;
     border-radius: .5em;
     padding: .3em;
     grid-area: footer;
@@ -49,10 +29,11 @@ footer{
 #contents{
     border-radius: .5em;
     padding: .3em;
-    grid-area: contentpanel;
+    grid-area: content;
     display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: repeat(20,1fr);
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+   /* grid-template-rows: repeat(20,1fr);*/
 }
 
 
@@ -62,23 +43,24 @@ footer{
     padding: .3em;
     height:60vh;
     width: 3fr;
-    grid-area: mappanel;
+    grid-area: map;
 } 
 
 #survey {
     border-radius: .5em;
     padding: .3em;
-    grid-area: sidepanel;
+    grid-area: side;
     overflow: hidden;
     /* 16:9 aspect ratio */
     padding-top: 0%;
     position: relative;
+    height: 100vh;
 }
 
 button {
     border-radius: .5em;
     color: #52734d;
-    background-color:#fcef7a;
+    background-color:#fdad51;
     max-height: 5em;
     
 }
@@ -90,4 +72,26 @@ button {
    position: absolute;
    top: 0;
    width: 100%;
+}
+
+@media all and (max-width:700px){
+    body{
+        grid-template-columns: auto;
+        grid-template-rows: 20vh 60vh 10vh 100vh 10vh;
+        grid-template-areas: 
+            "header" 
+            "map"
+            "content" 
+            "side" 
+            "footer"
+    }
+    #contents{
+        border-radius: .5em;
+        display: block;
+    }
+    #map{
+        height:60vh;
+        padding-left:5vh;
+        padding-right:5vh;
+    }
 }
