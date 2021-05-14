@@ -7,7 +7,8 @@ const map = L.map('map').setView([0, 0], 2);
 
 //get basemap
 let Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
+    
 });
 //set basemap
 Esri_WorldImagery.addTo(map);
@@ -64,7 +65,7 @@ function createButtons(lat,lng,title){
     newButton.setAttribute("lat",lat); // sets the latitude 
     newButton.setAttribute("lng",lng); // sets the longitude 
     newButton.addEventListener('click', function(){
-        map.flyTo([lat,lng],7); //this is the flyTo from Leaflet
+        map.flyTo([lat,lng],15); //this is the flyTo from Leaflet
     })
     const spaceForButtons = document.getElementById("contents")
     spaceForButtons.appendChild(newButton); //this adds the button to our page.
